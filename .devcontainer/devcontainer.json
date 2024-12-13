@@ -1,0 +1,7 @@
+{
+  "dockerFile": "./Dockerfile",
+  "postCreateCommand": "yarn install --frozen-lockfile",
+  "mounts": [
+    "source=jetbrains,target=/home/developer/.cache/JetBrains/RemoteDev/dist,type=volume"
+  ]
+}
