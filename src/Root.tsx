@@ -1,6 +1,16 @@
-import { Composition } from "remotion";
-import { HelloWorld, myCompSchema } from "./HelloWorld";
-import { Logo, myCompSchema2 } from "./HelloWorld/Logo";
+import { Composition } from 'remotion';
+import { HelloWorld, myCompSchema } from './HelloWorld';
+import { Logo, myCompSchema2 } from './HelloWorld/Logo';
+import { Intro } from './Intro';
+import type React from 'react';
+
+import 'normalize.css';
+import '@fontsource/lato/100.css';
+import '@fontsource/lato/300.css';
+import '@fontsource/lato/400.css';
+import '@fontsource/lato/700.css';
+import '@fontsource/lato/900.css';
+import './global.css';
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -20,10 +30,10 @@ export const RemotionRoot: React.FC = () => {
         // https://www.remotion.dev/docs/parametrized-rendering
         schema={myCompSchema}
         defaultProps={{
-          titleText: "Welcome to Remotion",
-          titleColor: "#000000",
-          logoColor1: "#91EAE4",
-          logoColor2: "#86A8E7",
+          titleText: 'Welcome to Remotion',
+          titleColor: '#000000',
+          logoColor1: '#91EAE4',
+          logoColor2: '#86A8E7',
         }}
       />
 
@@ -37,9 +47,18 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
         schema={myCompSchema2}
         defaultProps={{
-          logoColor1: "#91dAE2" as const,
-          logoColor2: "#86A8E7" as const,
+          logoColor1: '#6c0864' as const,
+          logoColor2: '#a10097' as const,
         }}
+      />
+
+      <Composition
+        id="Intro"
+        component={Intro}
+        durationInFrames={150}
+        fps={30}
+        width={1920}
+        height={1080}
       />
     </>
   );

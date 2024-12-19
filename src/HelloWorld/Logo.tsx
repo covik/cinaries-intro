@@ -4,11 +4,11 @@ import {
   spring,
   useCurrentFrame,
   useVideoConfig,
-} from "remotion";
-import { Arc } from "./Arc";
-import { Atom } from "./Atom";
-import { z } from "zod";
-import { zColor } from "@remotion/zod-types";
+} from 'remotion';
+import { Arc } from './Arc';
+import { Atom } from './Atom';
+import { z } from 'zod';
+import { zColor } from '@remotion/zod-types';
 
 export const myCompSchema2 = z.object({
   logoColor1: zColor(),
