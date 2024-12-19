@@ -12,6 +12,20 @@ RUN unlink /usr/local/bin/npm \
         curl \
         git \
         gnupg2 \
+        libnss3 \
+        libdbus-1-3 \
+        libatk1.0-0 \
+        libgbm-dev \
+        libasound2 \
+        libxrandr2 \
+        libxkbcommon-dev \
+        libxfixes3 \
+        libxcomposite1 \
+        libxdamage1 \
+        libpango-1.0-0 \
+        libcairo2 \
+        libcups2 \
+        libatk-bridge2.0-0 \
         openssh-client \
         sudo \
         watch \
