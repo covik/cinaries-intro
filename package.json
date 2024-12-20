@@ -6,6 +6,8 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@fontsource/lato": "^5.1.0",
     "@remotion/cli": "4.0.239",
     "@remotion/zod-types": "4.0.239",
