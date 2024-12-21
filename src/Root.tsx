@@ -4,14 +4,6 @@ import { Logo, myCompSchema2 } from './HelloWorld/Logo';
 import { Intro } from './Intro';
 import type React from 'react';
 
-import 'normalize.css';
-import '@fontsource/lato/100.css';
-import '@fontsource/lato/300.css';
-import '@fontsource/lato/400.css';
-import '@fontsource/lato/700.css';
-import '@fontsource/lato/900.css';
-import './global.css';
-
 // Each <Composition> is an entry in the sidebar!
 
 export const RemotionRoot: React.FC = () => {
