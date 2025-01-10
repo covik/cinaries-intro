@@ -1,7 +1,7 @@
 import { Composition } from 'remotion';
 import { HelloWorld, myCompSchema } from './HelloWorld';
 import { Logo, myCompSchema2 } from './HelloWorld/Logo';
-import { Intro } from './Intro';
+import { Intro } from './Intro/Intro';
 import type React from 'react';
 
 // Each <Composition> is an entry in the sidebar!
@@ -45,7 +45,7 @@ export const RemotionRoot: React.FC = () => {
       />
 
       <Composition
-        id="Intro"
+        id="Cinaries-Intro"
         component={Intro}
         durationInFrames={150}
         fps={30}
