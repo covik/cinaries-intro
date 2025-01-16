@@ -3,11 +3,12 @@ import { Img, interpolate, staticFile, useCurrentFrame } from 'remotion';
 
 const Props = z.object({
   rotationOffsetFrame: z.number(),
+  dockerfileColor: z.string(),
 });
 type Args = z.infer<typeof Props>;
 
 export function FirstDoll(args: Args) {
-  const { rotationOffsetFrame } = Props.parse(args);
+  const { rotationOffsetFrame, dockerfileColor } = Props.parse(args);
 
   const frame = useCurrentFrame();
 
@@ -49,8 +50,7 @@ export function FirstDoll(args: Args) {
           letterSpacing: '3px',
           textAlign: 'center',
           marginTop: '25px',
-          color: '#737373',
-          textShadow: '0px 1px 7px rgba(0, 0, 0, 0.4)',
+          color: dockerfileColor,
         }}
       >
         Dockerfile

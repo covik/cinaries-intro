@@ -47,20 +47,6 @@ export function SecondDoll(args: Args) {
         src={staticFile('2b.png')}
         style={{ display: 'block', width, position: 'relative' }}
       />
-      <span
-        style={{
-          fontWeight: 300,
-          fontSize: '45px',
-          width: '100%',
-          display: 'block',
-          letterSpacing: '3px',
-          marginTop: '25px',
-          color: '#737373',
-          textShadow: '0px 1px 7px rgba(0, 0, 0, 0.4)',
-        }}
-      >
-        composer:2
-      </span>
     </div>
   );
 }
