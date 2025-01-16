@@ -1,28 +1,15 @@
 import { z } from 'zod';
-import { Img, interpolate, staticFile, useCurrentFrame } from 'remotion';
+import { Img, staticFile } from 'remotion';
 
 const Props = z.object({
-  rotationOffsetFrame: z.number(),
+  rotationDegree: z.number().min(-110).max(0),
 });
 type Args = z.infer<typeof Props>;
 
 export function SecondDoll(args: Args) {
-  const { rotationOffsetFrame } = Props.parse(args);
-
-  const frame = useCurrentFrame();
+  const { rotationDegree } = Props.parse(args);
 
   const width = '190px';
-  const rotate =
-    0 ??
-    interpolate(
-      frame,
-      [rotationOffsetFrame, rotationOffsetFrame + 15],
-      [0, -110],
-      {
-        extrapolateLeft: 'clamp',
-        extrapolateRight: 'clamp',
-      },
-    );
 
   return (
     <div
@@ -39,7 +26,7 @@ export function SecondDoll(args: Args) {
           display: 'block',
           width,
           marginBottom: '-23px',
-          transform: `rotate(${rotate}deg)`,
+          transform: `rotate(${rotationDegree}deg)`,
           transformOrigin: '1px 211px',
         }}
       />

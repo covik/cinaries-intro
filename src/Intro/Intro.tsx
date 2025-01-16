@@ -10,6 +10,7 @@ import { FirstDoll } from './Doll/FirstDoll';
 import { SecondDoll } from './Doll/SecondDoll';
 import { GlobalStyle } from '../GlobalStyle';
 import { Transmission } from './Transmission';
+import { ThirdDoll } from './Doll/ThirdDoll';
 
 const colors = {
   neutral: '#737373',
@@ -18,6 +19,7 @@ const colors = {
 
 const dollEntranceDuration = 25;
 const transmissionDuration = 15;
+const dollOpenDuration = 15;
 
 export function Intro() {
   const frame = useCurrentFrame();
@@ -61,10 +63,46 @@ export function Intro() {
   const composerColor =
     frame >= secondDollEndFrame ? colors.progressing : colors.neutral;
 
+  const secondDollOpenStart = secondDollEndFrame + 10;
+  const secondDollOpenEnd = secondDollOpenStart + dollOpenDuration;
+  const secondDollOpen = interpolate(
+    frame,
+    [secondDollOpenStart, secondDollOpenEnd],
+    [0, -110],
+    {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+    },
+  );
+
+  const thirdDollUnboxStart = secondDollOpenEnd + 10;
+  const thirdDollUnboxDuration = 20;
+  const thirdDollUnboxEnd = thirdDollUnboxStart + thirdDollUnboxDuration;
+  const thirdDollX = [1230, 1510];
+  const thirdDollUnboxLeft = interpolate(
+    frame,
+    [thirdDollUnboxStart, thirdDollUnboxEnd],
+    thirdDollX,
+    {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+    },
+  );
+  const thirdDollUnboxVertexX = (thirdDollX[0] + thirdDollX[1]) / 2;
+  const thirdDollUnboxStartY = 585;
+  const thirdDollUnboxPeakY = 285;
+  const thirdDollUnboxSteepness =
+    (thirdDollUnboxStartY - thirdDollUnboxPeakY) /
+    (thirdDollX[0] - thirdDollUnboxVertexX) ** 2;
+  const thirdDollUnboxTop =
+    thirdDollUnboxSteepness *
+      (thirdDollUnboxLeft - thirdDollUnboxVertexX) ** 2 +
+    thirdDollUnboxPeakY;
+
   return (
     <>
       <GlobalStyle />
-      <AbsoluteFill style={{ backgroundColor: '#f5f5f5' }}>
+      <AbsoluteFill style={{ backgroundColor: '#f5f5f5', zIndex: 0 }}>
         <Sequence name="First doll">
           <div
             style={{
@@ -103,7 +141,7 @@ export function Intro() {
               opacity: secondDollEntrance,
             }}
           >
-            <SecondDoll rotationOffsetFrame={50} />
+            <SecondDoll rotationDegree={secondDollOpen} />
           </div>
         </Sequence>
 
@@ -122,6 +160,19 @@ export function Intro() {
           >
             {Math.trunc(secondDollBytesDownloaded)} MB
           </span>
+        </Sequence>
+
+        <Sequence from={secondDollEndFrame} name="Third doll">
+          <div
+            style={{
+              position: 'absolute',
+              top: `${thirdDollUnboxTop}px`,
+              left: `${thirdDollUnboxLeft}px`,
+              zIndex: -1,
+            }}
+          >
+            <ThirdDoll />
+          </div>
         </Sequence>
       </AbsoluteFill>
     </>
